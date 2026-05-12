@@ -27,8 +27,7 @@ body.sidebar-open {
 }
 
 .app-layout {
-    display: grid;
-    grid-template-columns: 260px 1fr;
+    display: block;
     min-height: 100vh;
 }
 
@@ -41,8 +40,14 @@ body.sidebar-open {
     border-right: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.25s ease;
     width: 260px;
-    position: relative;
+    position: fixed;
     left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 18;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
 }
 
 .sidebar.hidden {
@@ -188,6 +193,8 @@ body.sidebar-open {
 
 .main-content {
     min-width: 0;
+    margin-left: 260px;
+    width: calc(100% - 260px);
 }
 
 .top-header {
@@ -215,7 +222,7 @@ body.sidebar-open {
 }
 
 .page-title-row {
-    background: #f0f1f3;
+    background: #fff;
     border: 1px solid #e7eaee;
     border-radius: 16px 16px 0 0;
     padding: 16px;
@@ -307,6 +314,85 @@ body.sidebar-open {
     color: #546071;
     font-weight: 500;
     font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--green);
+    color: var(--green);
+    background: #f0fdf9;
+}
+
+.filter-panel {
+    display: none;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 0;
+    padding: 16px;
+    gap: 12px;
+}
+
+.filter-panel.active {
+    display: flex;
+}
+
+.filter-content {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-input {
+    width: 180px;
+    height: 40px;
+    border: 1px solid #ebeff3;
+    border-radius: 10px;
+    background: #f9fbfc;
+    padding: 0 12px;
+    font-size: 14px;
+    color: var(--text-main);
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: var(--green);
+    background: #fff;
+}
+
+.clear-filter-btn {
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid #e8ecf1;
+    background: #fef2f2;
+    border-radius: 10px;
+    color: #dc2626;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clear-filter-btn:hover {
+    background: #fee2e2;
+    border-color: #dc2626;
 }
 
 .course-table {
@@ -367,6 +453,10 @@ body.sidebar-open {
     font-weight: 600;
 }
 
+.course-table td:last-child {
+    text-align: right;
+}
+
 .register-btn {
     border: 0;
     background: var(--green);
@@ -383,9 +473,69 @@ body.sidebar-open {
     background: var(--green-dark);
 }
 
+.pagination-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 24px 16px;
+    background: #fff;
+    border-top: 0;
+    border-radius: 0 0 16px 16px;
+}
+
+.pagination {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.pagination-btn,
+.pagination-page {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e8ecf1;
+    background: #f7f9fb;
+    border-radius: 10px;
+    color: #546071;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled),
+.pagination-page:hover:not(.active) {
+    border-color: var(--green);
+    color: var(--green);
+    background: #f0fdf9;
+}
+
+.pagination-page.active {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-dots {
+    color: #9aa3ae;
+    font-size: 14px;
+}
+
 @media (max-width: 1400px) {
+    .sidebar {
+        width: 84px;
+    }
+
     .app-layout {
-        grid-template-columns: 84px 1fr;
+        display: block;
     }
 
     .brand-sub,
@@ -400,11 +550,20 @@ body.sidebar-open {
         justify-content: center;
         grid-template-columns: 1fr;
     }
+
+    .main-content {
+        margin-left: 84px;
+        width: calc(100% - 84px);
+    }
 }
 
 @media (max-width: 1200px) {
+    .sidebar {
+        width: 260px;
+    }
+
     .app-layout {
-        grid-template-columns: 1fr;
+        display: block;
     }
 
     .brand-sub,
@@ -417,6 +576,11 @@ body.sidebar-open {
     .menu-item,
     .user-box {
         justify-content: flex-start;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
     }
 
     .user-box {
@@ -612,6 +776,10 @@ body.sidebar-open {
     }
 
     .course-table td:nth-child(6)::before {
+        content: "Lịch học";
+    }
+
+    .course-table td:nth-child(7)::before {
         content: "Thao tác";
     }
 

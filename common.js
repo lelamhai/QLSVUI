@@ -39,4 +39,23 @@
             setSidebarOpenState(false);
         }
     });
+
+    // Filter panel toggle
+    const filterBtn = document.getElementById('filter-toggle');
+    const filterPanel = document.getElementById('filter-panel');
+    const clearFilterBtn = document.querySelector('.clear-filter-btn');
+
+    if (filterBtn && filterPanel) {
+        filterBtn.addEventListener('click', function () {
+            filterPanel.classList.toggle('active');
+        });
+
+        // Clear filter functionality
+        if (clearFilterBtn) {
+            clearFilterBtn.addEventListener('click', function () {
+                document.getElementById('academic-year').value = '';
+                document.getElementById('semester').value = '';
+            });
+        }
+    }
 })();

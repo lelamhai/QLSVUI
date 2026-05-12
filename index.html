@@ -23,23 +23,23 @@
             <nav class="menu">
                 <a href="#" class="menu-item">
                     <span class="menu-icon"><i class="fa-solid fa-border-all"></i></span>
-                    <span class="menu-text"><strong>Trang chủ</strong><small>Tổng quan</small></span>
+                    <span class="menu-text"><strong>Trang chủ</strong></span>
                 </a>
                 <a href="#" class="menu-item active">
                     <span class="menu-icon"><i class="fa-regular fa-clipboard"></i></span>
-                    <span class="menu-text"><strong>Đăng ký môn</strong><small>Chọn lớp học phần</small></span>
+                    <span class="menu-text"><strong>Đăng ký môn</strong></span>
                 </a>
                 <a href="#" class="menu-item">
                     <span class="menu-icon"><i class="fa-regular fa-square-check"></i></span>
-                    <span class="menu-text"><strong>Môn đã đăng ký</strong><small>Danh sách môn học</small></span>
+                    <span class="menu-text"><strong>Môn đã đăng ký</strong></span>
                 </a>
                 <a href="#" class="menu-item">
                     <span class="menu-icon"><i class="fa-solid fa-trophy"></i></span>
-                    <span class="menu-text"><strong>Bảng điểm</strong><small>Kết quả học tập</small></span>
+                    <span class="menu-text"><strong>Bảng điểm</strong></span>
                 </a>
                 <a href="#" class="menu-item">
                     <span class="menu-icon"><i class="fa-solid fa-gear"></i></span>
-                    <span class="menu-text"><strong>Cài đặt</strong><small>Đổi mật khẩu</small></span>
+                    <span class="menu-text"><strong>Cài đặt</strong></span>
                 </a>
             </nav>
 
@@ -67,7 +67,6 @@
                         <div class="title-icon"><i class="fa-regular fa-square-plus"></i></div>
                         <div>
                             <h1>Đăng ký môn học</h1>
-                            <p>Chọn lớp học phần để đăng ký</p>
                         </div>
                     </div>
                     <span class="status-badge"><i class="fa-regular fa-eye"></i> Đã đăng ký: 0 môn</span>
@@ -77,9 +76,34 @@
                     <div class="table-toolbar">
                         <div class="search-box">
                             <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="text" placeholder="Tìm kiếm theo mã lớp, tên môn...">
+                            <input type="text" placeholder="Tìm kiếm theo tên môn">
                         </div>
-                        <button class="filter-btn"><i class="fa-solid fa-filter"></i> Lọc</button>
+                        <button class="filter-btn" id="filter-toggle"><i class="fa-solid fa-filter"></i> Lọc</button>
+                    </div>
+
+                    <div class="filter-panel" id="filter-panel">
+                        <div class="filter-content">
+                            <div class="filter-group">
+                                <label for="academic-year">Niên khóa</label>
+                                <select id="academic-year" class="filter-input">
+                                    <option value="">-- Chọn niên khóa --</option>
+                                    <option value="2023-2024">2023-2024</option>
+                                    <option value="2024-2025">2024-2025</option>
+                                    <option value="2025-2026">2025-2026</option>
+                                    <option value="2026-2027">2026-2027</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="semester">Học kỳ</label>
+                                <select id="semester" class="filter-input">
+                                    <option value="">-- Chọn học kỳ --</option>
+                                    <option value="HK1">Học kỳ 1</option>
+                                    <option value="HK2">Học kỳ 2</option>
+                                    <option value="HK3">Học kỳ 3</option>
+                                </select>
+                            </div>
+                            <button class="clear-filter-btn">Xóa filter</button>
+                        </div>
                     </div>
 
                     <div class="table-responsive">
@@ -91,6 +115,7 @@
                                     <th>Giảng viên</th>
                                     <th>Học kỳ</th>
                                     <th>Sĩ số</th>
+                                    <th>Lịch học</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -101,6 +126,7 @@
                                     <td><i class="fa-regular fa-user"></i> Bùi Xuân Phúc</td>
                                     <td><span class="term">HK1 2023-2026</span></td>
                                     <td><i class="fa-solid fa-users"></i> 0/50</td>
+                                    <td><strong>Thứ: 2, 4, 5</strong><small>01/03/2026 - 30/05/2026</small></td>
                                     <td><button class="register-btn">Đăng ký</button></td>
                                 </tr>
                                 <tr>
@@ -109,6 +135,7 @@
                                     <td><i class="fa-regular fa-user"></i> Huỳnh Thanh Nam</td>
                                     <td><span class="term">HK1 2025-2026</span></td>
                                     <td><i class="fa-solid fa-users"></i> 25/50</td>
+                                    <td><strong>Thứ: 3, 5</strong><small>05/03/2026 - 02/06/2026</small></td>
                                     <td><button class="register-btn">Đăng ký</button></td>
                                 </tr>
                                 <tr>
@@ -117,6 +144,7 @@
                                     <td><i class="fa-regular fa-user"></i> Ngô Hoàng Đạt</td>
                                     <td><span class="term">HK1 2024-2025</span></td>
                                     <td><i class="fa-solid fa-users"></i> 29/50</td>
+                                    <td><strong>Thứ: 2, 4</strong><small>03/03/2026 - 28/05/2026</small></td>
                                     <td><button class="register-btn">Đăng ký</button></td>
                                 </tr>
                                 <tr>
@@ -125,6 +153,7 @@
                                     <td><i class="fa-regular fa-user"></i> Ngô Hoàng Đạt</td>
                                     <td><span class="term">HK2 2024-2025</span></td>
                                     <td><i class="fa-solid fa-users"></i> 24/50</td>
+                                    <td><strong>Thứ: 2, 4, 5</strong><small>15/05/2025 - 15/08/2025</small></td>
                                     <td><button class="register-btn">Đăng ký</button></td>
                                 </tr>
                                 <tr>
@@ -133,6 +162,7 @@
                                     <td><i class="fa-regular fa-user"></i> Bùi Xuân Quang</td>
                                     <td><span class="term">HK1 2024-2025</span></td>
                                     <td><i class="fa-solid fa-users"></i> 31/50</td>
+                                    <td><strong>Thứ: 3, 5</strong><small>18/09/2024 - 15/12/2024</small></td>
                                     <td><button class="register-btn">Đăng ký</button></td>
                                 </tr>
                                 <tr>
@@ -141,6 +171,7 @@
                                     <td><i class="fa-regular fa-user"></i> Bùi Xuân Quang</td>
                                     <td><span class="term">HK1 2024-2025</span></td>
                                     <td><i class="fa-solid fa-users"></i> 35/50</td>
+                                    <td><strong>Thứ: 2, 4</strong><small>18/09/2024 - 15/12/2024</small></td>
                                     <td><button class="register-btn">Đăng ký</button></td>
                                 </tr>
                                 <tr>
@@ -149,6 +180,7 @@
                                     <td><i class="fa-regular fa-user"></i> Lê Văn Khang</td>
                                     <td><span class="term">HK2 2024-2025</span></td>
                                     <td><i class="fa-solid fa-users"></i> 26/50</td>
+                                    <td><strong>Thứ: 3, 5</strong><small>20/05/2025 - 20/08/2025</small></td>
                                     <td><button class="register-btn">Đăng ký</button></td>
                                 </tr>
                                 <tr>
@@ -157,6 +189,7 @@
                                     <td><i class="fa-regular fa-user"></i> Lê Văn Khang</td>
                                     <td><span class="term">HK2 2024-2025</span></td>
                                     <td><i class="fa-solid fa-users"></i> 16/50</td>
+                                    <td><strong>Thứ: 2, 4, 5</strong><small>20/05/2025 - 20/08/2025</small></td>
                                     <td><button class="register-btn">Đăng ký</button></td>
                                 </tr>
                                 <tr>
@@ -165,6 +198,7 @@
                                     <td><i class="fa-regular fa-user"></i> Trần Phương Cường</td>
                                     <td><span class="term">HK1 2025-2026</span></td>
                                     <td><i class="fa-solid fa-users"></i> 22/50</td>
+                                    <td><strong>Thứ: 3, 5</strong><small>01/03/2026 - 30/05/2026</small></td>
                                     <td><button class="register-btn">Đăng ký</button></td>
                                 </tr>
                                 <tr>
@@ -173,10 +207,27 @@
                                     <td><i class="fa-regular fa-user"></i> Phan Xuân Nam</td>
                                     <td><span class="term">HK1 2025-2026</span></td>
                                     <td><i class="fa-solid fa-users"></i> 24/50</td>
+                                    <td><strong>Thứ: 2, 4</strong><small>01/03/2026 - 30/05/2026</small></td>
                                     <td><button class="register-btn">Đăng ký</button></td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="pagination-wrapper">
+                        <nav class="pagination">
+                            <button class="pagination-btn pagination-prev" title="Trang trước">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="pagination-page active">1</button>
+                            <button class="pagination-page">2</button>
+                            <button class="pagination-page">3</button>
+                            <span class="pagination-dots">...</span>
+                            <button class="pagination-page">10</button>
+                            <button class="pagination-btn pagination-next" title="Trang sau">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </nav>
                     </div>
                 </div>
             </section>
