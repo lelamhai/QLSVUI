@@ -1,0 +1,635 @@
+:root {
+    --sidebar-bg: linear-gradient(180deg, #005b4b 0%, #004136 100%);
+    --green: #12b886;
+    --green-dark: #0f9f74;
+    --bg-main: #f3f5f7;
+    --text-main: #1f2937;
+    --text-sub: #6b7280;
+    --line: #e9edf1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', "Inter", "Segoe UI", Tahoma, Arial, sans-serif;
+    font-weight: 400;
+    color: var(--text-main);
+    background: var(--bg-main);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body.sidebar-open {
+    overflow: hidden;
+}
+
+.app-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+.sidebar {
+    background: var(--sidebar-bg);
+    color: #e8fff8;
+    padding: 18px 12px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(13, 22, 29, 0.45);
+    z-index: 15;
+}
+
+.brand-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 2px 10px 16px;
+}
+
+.brand-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: #14c79c;
+    display: grid;
+    place-items: center;
+    color: #fff;
+}
+
+.brand-title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.brand-sub {
+    font-size: 12px;
+    color: #a5ddd0;
+}
+
+.menu {
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #d5f4eb;
+    padding: 12px 10px;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.09);
+    color: #fff;
+}
+
+.menu-item.active {
+    background: rgba(19, 215, 158, 0.24);
+    border: 1px solid rgba(135, 246, 213, 0.22);
+}
+
+.menu-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 13px;
+}
+
+.menu-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-text strong {
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.menu-text small {
+    font-size: 14px;
+    color: #a6d8cc;
+}
+
+.user-box {
+    margin-top: auto;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 14px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 38px 1fr 28px;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #0f6d58;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+}
+
+.user-box strong {
+    display: block;
+    font-size: 14px;
+    color: #e7fff8;
+}
+
+.user-box small {
+    color: #89cdbb;
+    font-size: 12px;
+}
+
+.logout {
+    border: 0;
+    background: #80514f;
+    color: #ffc6c2;
+    border-radius: 10px;
+    width: 28px;
+    height: 28px;
+}
+
+.main-content {
+    min-width: 0;
+}
+
+.top-header {
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+}
+
+.toggle-btn,
+.notify-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e8ebef;
+    background: #fff;
+    border-radius: 12px;
+    color: #4b5563;
+}
+
+.content-wrap {
+    padding: 16px;
+}
+
+.page-title-row {
+    background: #f0f1f3;
+    border: 1px solid #e7eaee;
+    border-radius: 16px 16px 0 0;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.page-title-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    background: #11b788;
+    color: white;
+    display: grid;
+    place-items: center;
+}
+
+.page-title-group h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.page-title-group p {
+    margin: 2px 0 0;
+    color: var(--text-sub);
+    font-size: 17px;
+}
+
+.status-badge {
+    color: #78a756;
+    background: #eef8e7;
+    border: 1px solid #d5e9c4;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.table-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 0;
+    border-radius: 0 0 16px 16px;
+    padding: 14px;
+}
+
+.table-toolbar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.search-box {
+    flex: 1;
+    height: 46px;
+    border: 1px solid #ebeff3;
+    border-radius: 12px;
+    background: #f9fbfc;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    color: #8a96a3;
+}
+
+.search-box input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    margin-left: 10px;
+    width: 100%;
+    font-size: 15px;
+}
+
+.filter-btn {
+    border: 1px solid #e8ecf1;
+    background: #f7f9fb;
+    border-radius: 12px;
+    height: 46px;
+    padding: 0 14px;
+    color: #546071;
+    font-weight: 600;
+}
+
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.course-table th,
+.course-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #eef1f4;
+    vertical-align: middle;
+}
+
+.course-table th {
+    color: #4b5563;
+    font-size: 16px;
+    background: #fff;
+    font-weight: 700;
+    text-align: left;
+}
+
+.course-table td {
+    color: #374151;
+    font-size: 16px;
+}
+
+.course-table td i {
+    color: #0eae81;
+    margin-right: 6px;
+}
+
+.course-table td strong {
+    display: block;
+    font-size: 25px;
+}
+
+.course-table td small {
+    color: #9aa3ae;
+    font-size: 14px;
+}
+
+.code {
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.term {
+    background: #deecf9;
+    border: 1px solid #c7def2;
+    color: #3a7ec3;
+    font-size: 12px;
+    border-radius: 9px;
+    padding: 3px 8px;
+    font-weight: 700;
+}
+
+.register-btn {
+    border: 0;
+    background: var(--green);
+    color: #fff;
+    font-weight: 700;
+    height: 42px;
+    min-width: 96px;
+    border-radius: 14px;
+    padding: 0 16px;
+}
+
+.register-btn:hover {
+    background: var(--green-dark);
+}
+
+@media (max-width: 1200px) {
+    .app-layout {
+        grid-template-columns: 84px 1fr;
+    }
+
+    .brand-sub,
+    .menu-text,
+    .user-box > div {
+        display: none;
+    }
+
+    .brand-box,
+    .menu-item,
+    .user-box {
+        justify-content: center;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .app-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-sub,
+    .menu-text,
+    .user-box > div {
+        display: block;
+    }
+
+    .brand-box,
+    .menu-item,
+    .user-box {
+        justify-content: flex-start;
+    }
+
+    .user-box {
+        grid-template-columns: 38px 1fr 28px;
+    }
+
+    .brand-title {
+        font-size: 22px;
+    }
+
+    .menu-text strong {
+        font-size: 16px;
+    }
+
+    .menu-text small {
+        font-size: 12px;
+    }
+
+    .course-table td strong {
+        font-size: 18px;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -270px;
+        top: 0;
+        width: 260px;
+        height: 100vh;
+        z-index: 20;
+        transition: left 0.25s ease;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+
+    .content-wrap {
+        padding: 12px;
+    }
+
+    .page-title-group h1 {
+        font-size: 24px;
+    }
+
+    .page-title-group p {
+        font-size: 14px;
+    }
+
+    .page-title-row,
+    .table-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .status-badge {
+        width: 100%;
+        text-align: center;
+    }
+
+    .filter-btn {
+        width: 100%;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .course-table {
+        min-width: 860px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-header {
+        height: 58px;
+        padding: 0 10px;
+    }
+
+    .toggle-btn,
+    .notify-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .page-title-row {
+        border-radius: 14px 14px 0 0;
+        padding: 12px;
+    }
+
+    .title-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+    }
+
+    .page-title-group {
+        align-items: flex-start;
+    }
+
+    .page-title-group h1 {
+        font-size: 20px;
+    }
+
+    .page-title-group p {
+        font-size: 13px;
+    }
+
+    .table-card {
+        padding: 10px;
+        border-radius: 0 0 14px 14px;
+    }
+
+    .table-toolbar {
+        margin-bottom: 12px;
+    }
+
+    .search-box,
+    .filter-btn {
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    .table-responsive {
+        overflow: visible;
+    }
+
+    .course-table {
+        min-width: 0;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+    .course-table thead {
+        display: none;
+    }
+
+    .course-table tbody tr {
+        display: block;
+        background: #fff;
+        border: 1px solid #e9edf1;
+        border-radius: 12px;
+        box-shadow: 0 3px 8px rgba(15, 23, 42, 0.03);
+        padding: 6px 10px;
+    }
+
+    .course-table td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border: 0;
+        border-bottom: 1px dashed #edf1f4;
+        padding: 8px 2px;
+        font-size: 14px;
+        text-align: right;
+    }
+
+    .course-table td:last-child {
+        border-bottom: 0;
+    }
+
+    .course-table td::before {
+        content: "";
+        color: #6b7280;
+        font-weight: 700;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .course-table td:nth-child(1)::before {
+        content: "Mã lớp HP";
+    }
+
+    .course-table td:nth-child(2)::before {
+        content: "Môn học";
+    }
+
+    .course-table td:nth-child(3)::before {
+        content: "Giảng viên";
+    }
+
+    .course-table td:nth-child(4)::before {
+        content: "Học kỳ";
+    }
+
+    .course-table td:nth-child(5)::before {
+        content: "Sĩ số";
+    }
+
+    .course-table td:nth-child(6)::before {
+        content: "Thao tác";
+    }
+
+    .course-table td strong {
+        font-size: 15px;
+    }
+
+    .course-table td small {
+        font-size: 12px;
+    }
+
+    .register-btn {
+        height: 36px;
+        min-width: 88px;
+        font-size: 14px;
+        border-radius: 10px;
+        padding: 0 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-wrap {
+        padding: 8px;
+    }
+
+    .page-title-row {
+        padding: 10px;
+    }
+
+    .status-badge {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .sidebar {
+        width: 88%;
+        max-width: 290px;
+        left: -100%;
+    }
+}
