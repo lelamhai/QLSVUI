@@ -39,6 +39,20 @@ body.sidebar-open {
     display: flex;
     flex-direction: column;
     border-right: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.25s ease;
+    width: 260px;
+    position: relative;
+    left: 0;
+}
+
+.sidebar.hidden {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    height: 100vh;
+    z-index: 19;
+    padding: 18px 12px;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-overlay {
@@ -369,7 +383,7 @@ body.sidebar-open {
     background: var(--green-dark);
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .app-layout {
         grid-template-columns: 84px 1fr;
     }
@@ -388,7 +402,7 @@ body.sidebar-open {
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .app-layout {
         grid-template-columns: 1fr;
     }
