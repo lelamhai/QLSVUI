@@ -1,0 +1,5 @@
+@import url("common.css");
+
+/* template.css
+   Dùng cho phần giao diện chung: layout, sidebar, header, notify, shell.
+   Khi tái sử dụng cho trang khác, giữ phần này và thay content.html/content.css. */
