@@ -6,6 +6,8 @@
     const filterPanel = document.getElementById('filter-panel');
     const registerButtons = document.querySelectorAll('.register-btn');
     const statusBadge = document.querySelector('.status-badge');
+    const notifyToggle = document.getElementById('notify-toggle');
+    const notificationPanel = document.getElementById('notification-panel');
 
     if (!toggleButton || !sidebar) {
         return;
@@ -92,4 +94,21 @@
             });
         });
     }
+
+    if (notifyToggle && notificationPanel) {
+        notifyToggle.addEventListener('click', function (event) {
+            event.stopPropagation();
+            const isOpen = notificationPanel.classList.toggle('show');
+            notificationPanel.setAttribute('aria-hidden', String(!isOpen));
+        });
+    }
+
+    document.addEventListener('click', function (event) {
+        if (notificationPanel && notificationPanel.classList.contains('show')) {
+            if (!notificationPanel.contains(event.target) && !notifyToggle.contains(event.target)) {
+                notificationPanel.classList.remove('show');
+                notificationPanel.setAttribute('aria-hidden', 'true');
+            }
+        }
+    });
 })();
