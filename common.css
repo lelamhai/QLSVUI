@@ -101,6 +101,7 @@ body.sidebar-open {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    flex: 1;
 }
 
 .menu-item {
@@ -110,8 +111,14 @@ body.sidebar-open {
     text-decoration: none;
     color: #d5f4eb;
     padding: 12px 10px;
+    min-height: 52px;
     border-radius: 12px;
     transition: background 0.2s ease;
+}
+
+/* Logout menu item - aligned to bottom */
+.menu-item.logout-item {
+    margin-top: auto;
 }
 
 .menu-item:hover {
@@ -137,9 +144,12 @@ body.sidebar-open {
 .menu-text {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    min-height: 30px;
 }
 
 .menu-text strong {
+    display: block;
     font-size: 15px;
     line-height: 1.2;
 }
@@ -217,6 +227,14 @@ body.sidebar-open {
     color: #4b5563;
 }
 
+.notify-btn {
+    margin-left: auto;
+}
+
+.toggle-btn {
+    display: none;
+}
+
 .content-wrap {
     padding: 16px;
 }
@@ -246,11 +264,13 @@ body.sidebar-open {
     color: white;
     display: grid;
     place-items: center;
+    flex-shrink: 0;
 }
 
 .page-title-group h1 {
     margin: 0;
     font-size: 26px;
+    line-height: 1;
 }
 
 .page-title-group p {
@@ -309,7 +329,7 @@ body.sidebar-open {
     border: 1px solid #e8ecf1;
     background: #f7f9fb;
     border-radius: 12px;
-    height: 46px;
+    height: 40px;
     padding: 0 14px;
     color: #546071;
     font-weight: 500;
@@ -322,77 +342,6 @@ body.sidebar-open {
     border-color: var(--green);
     color: var(--green);
     background: #f0fdf9;
-}
-
-.filter-panel {
-    display: none;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-top: 0;
-    padding: 16px;
-    gap: 12px;
-}
-
-.filter-panel.active {
-    display: flex;
-}
-
-.filter-content {
-    display: flex;
-    gap: 16px;
-    align-items: flex-end;
-    flex-wrap: wrap;
-}
-
-.filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.filter-group label {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-main);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.filter-input {
-    width: 180px;
-    height: 40px;
-    border: 1px solid #ebeff3;
-    border-radius: 10px;
-    background: #f9fbfc;
-    padding: 0 12px;
-    font-size: 14px;
-    color: var(--text-main);
-    font-family: inherit;
-    cursor: pointer;
-}
-
-.filter-input:focus {
-    outline: none;
-    border-color: var(--green);
-    background: #fff;
-}
-
-.clear-filter-btn {
-    height: 40px;
-    padding: 0 16px;
-    border: 1px solid #e8ecf1;
-    background: #fef2f2;
-    border-radius: 10px;
-    color: #dc2626;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.clear-filter-btn:hover {
-    background: #fee2e2;
-    border-color: #dc2626;
 }
 
 .course-table {
@@ -464,13 +413,33 @@ body.sidebar-open {
     font-weight: 600;
     font-size: 14px;
     height: 42px;
-    min-width: 96px;
+    width: 120px;
+    min-width: 120px;
     border-radius: 14px;
     padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
 }
 
 .register-btn:hover {
     background: var(--green-dark);
+}
+
+.register-btn.is-registered {
+    background: #eef8e7;
+    border: 1px solid #d5e9c4;
+    color: #78a756;
+    width: 120px;
+    min-width: 120px;
+    cursor: default;
+}
+
+.register-btn.is-registered:hover {
+    background: #eef8e7;
+    color: #78a756;
 }
 
 .pagination-wrapper {
@@ -529,37 +498,438 @@ body.sidebar-open {
     font-size: 14px;
 }
 
-@media (max-width: 1400px) {
+.filter-panel {
+    display: none;
+    margin-bottom: 12px;
+    padding: 14px;
+    border: 1px solid #e8ecf1;
+    border-radius: 12px;
+    background: #f9fbfc;
+}
+
+.filter-panel.show {
+    display: block;
+}
+
+.filter-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.filter-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 42px;
+    border: 1px solid #dbe4ea;
+    border-radius: 12px;
+    background: #fff;
+    padding: 0 14px;
+    padding-right: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23546071' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 17px) 50%;
+    background-size: 14px;
+    color: #374151;
+    font-size: 14px;
+    outline: none;
+}
+
+.filter-select:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(18, 184, 134, 0.12);
+}
+
+@media screen and (max-width: 767px) {
+    .filter-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* iPad / tablet 768px - 1024px */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .course-table {
+        min-width: 1024px;
+    }
+
     .sidebar {
-        width: 84px;
+        width: 260px;
+        position: fixed;
+        left: -270px;
+        top: 0;
+        height: 100vh;
+        z-index: 20;
+        transition: left 0.25s ease;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+
+    .toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .app-layout {
         display: block;
     }
 
-    .brand-sub,
-    .menu-text,
-    .user-box > div {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .content-wrap {
+        padding: 12px;
+    }
+
+    .page-title-group h1 {
+        font-size: 22px;
+    }
+
+    .page-title-group p {
+        font-size: 13px;
+    }
+
+    .page-title-row,
+    .table-toolbar {
+        flex-wrap: nowrap;
+    }
+
+    .status-badge {
+        width: auto;
+        text-align: left;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-card {
+        padding: 12px;
+    }
+
+    .page-title-row {
+        padding: 12px 14px;
+        border-radius: 14px 14px 0 0;
+    }
+
+    .table-card {
+        border-radius: 0 0 14px 14px;
+    }
+
+    .top-header {
+        height: 58px;
+        padding: 0 12px;
+    }
+
+    .notify-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .page-title-group {
+        gap: 10px;
+        align-items: center;
+    }
+
+    .title-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+    }
+
+    .table-toolbar {
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .search-box {
+        height: 40px;
+        border-radius: 10px;
+    }
+
+}
+
+/* Desktop từ 1024px đến 1366px */
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    .course-table {
+        min-width: 1024px;
+    }
+
+    .app-layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 260px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 18;
+        transition: all 0.25s ease;
+    }
+
+    .sidebar-overlay {
         display: none;
     }
 
-    .brand-box,
-    .menu-item,
-    .user-box {
-        justify-content: center;
-        grid-template-columns: 1fr;
+    .toggle-btn {
+        display: none;
     }
 
     .main-content {
-        margin-left: 84px;
-        width: calc(100% - 84px);
+        margin-left: 260px;
+        width: calc(100% - 260px);
+    }
+
+    .top-header {
+        padding: 0 16px;
+    }
+
+    .content-wrap {
+        padding: 16px;
+    }
+
+    .page-title-row {
+        padding: 16px;
+        flex-wrap: nowrap;
+    }
+
+    .page-title-group {
+        gap: 12px;
+    }
+
+    .page-title-group h1 {
+        font-size: 26px;
+    }
+
+    .status-badge {
+        width: auto;
+        text-align: left;
+    }
+
+    .table-card {
+        padding: 14px;
+    }
+
+    .table-toolbar {
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
-@media (max-width: 1200px) {
+/* Tablet (tối ưu cho thiết bị nhỏ hơn 768px nhưng không phải là mobile) */
+@media screen and (min-width: 601px) and (max-width: 767px) {
     .sidebar {
         width: 260px;
+        position: fixed;
+        left: -270px;
+        top: 0;
+        height: 100vh;
+        z-index: 20;
+        transition: left 0.25s ease;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+
+    .toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .app-layout {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .content-wrap {
+        padding: 12px;
+    }
+
+    .page-title-group h1 {
+        font-size: 18px;
+    }
+
+    .page-title-group p {
+        font-size: 12px;
+    }
+
+    .page-title-row,
+    .table-toolbar {
+        flex-wrap: nowrap;
+    }
+
+    .status-badge {
+        width: auto;
+        text-align: left;
+    }
+
+    .search-box {
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    .top-header {
+        height: 58px;
+        padding: 0 10px;
+    }
+
+    .notify-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .page-title-row {
+        border-radius: 14px 14px 0 0;
+        padding: 12px;
+    }
+
+    .title-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+    }
+
+    .page-title-group {
+        align-items: flex-start;
+    }
+
+    .table-card {
+        padding: 10px;
+        border-radius: 0 0 14px 14px;
+    }
+
+    .table-toolbar {
+        margin-bottom: 12px;
+    }
+
+    .table-responsive {
+        overflow: visible;
+    }
+
+    .course-table {
+        min-width: 860px;
+    }
+
+    .course-table td strong {
+        font-size: 15px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-card {
+        padding: 12px;
+    }
+
+    .page-title-row {
+        padding: 12px 14px;
+        border-radius: 14px 14px 0 0;
+    }
+
+    .table-card {
+        border-radius: 0 0 14px 14px;
+    }
+
+    .top-header {
+        height: 58px;
+        padding: 0 12px;
+    }
+
+    .notify-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .page-title-group {
+        gap: 10px;
+        align-items: center;
+    }
+
+    .title-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+    }
+
+    .table-toolbar {
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+}
+
+/* Mobile đứng (portrait) */
+@media screen and (max-width: 600px) and (orientation: portrait) {
+    .menu-text {
+        min-height: 15px;
+    }
+    
+    .sidebar {
+        width: 88%;
+        max-width: 290px;
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100vh;
+        z-index: 20;
+        transition: left 0.25s ease;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+
+    .toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .app-layout {
@@ -599,15 +969,171 @@ body.sidebar-open {
         font-size: 11px;
     }
 
+    .content-wrap {
+        padding: 8px;
+    }
+
+    .top-header {
+        height: 58px;
+        padding: 0 10px;
+    }
+
+    .notify-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .page-title-row {
+        border-radius: 14px 14px 0 0;
+        padding: 10px;
+    }
+
+    .title-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+    }
+
+    .page-title-group {
+        align-items: flex-start;
+        align-items: center;
+    }
+
+    .page-title-group h1 {
+        font-size: 18px;
+    }
+
+    .page-title-group p {
+        font-size: 12px;
+    }
+
+    .status-badge {
+        text-align: center;
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .table-card {
+        padding: 10px;
+        border-radius: 0 0 14px 14px;
+    }
+
+    .table-toolbar {
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+    }
+
+    .search-box {
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    .table-responsive {
+        overflow: visible;
+    }
+
+    .course-table {
+        min-width: 0;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+    .course-table thead {
+        display: none;
+    }
+
+    .course-table tbody tr {
+        display: block;
+        background: #fff;
+        border: 1px solid #e9edf1;
+        border-radius: 12px;
+        box-shadow: 0 3px 8px rgba(15, 23, 42, 0.03);
+        padding: 6px 10px;
+    }
+
+    .course-table td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border: 0;
+        border-bottom: 1px dashed #edf1f4;
+        padding: 8px 2px;
+        font-size: 14px;
+        text-align: right;
+    }
+
+    .course-table td:last-child {
+        border-bottom: 0;
+    }
+
+    .course-table td::before {
+        content: "";
+        color: #6b7280;
+        font-weight: 700;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .course-table td:nth-child(1)::before {
+        content: "Mã lớp HP";
+    }
+
+    .course-table td:nth-child(2)::before {
+        content: "Môn học";
+    }
+
+    .course-table td:nth-child(3)::before {
+        content: "Giảng viên";
+    }
+
+    .course-table td:nth-child(4)::before {
+        content: "Học kỳ";
+    }
+
+    .course-table td:nth-child(5)::before {
+        content: "Sĩ số";
+    }
+
+    .course-table td:nth-child(6)::before {
+        content: "Lịch học";
+    }
+
+    .course-table td:nth-child(7)::before {
+        content: "Thao tác";
+    }
+
     .course-table td strong {
         font-size: 15px;
     }
 
+    .course-table td small {
+        font-size: 12px;
+    }
+
+    .register-btn {
+        height: 36px;
+        width: 88px;
+        min-width: 88px;
+        font-size: 14px;
+        border-radius: 10px;
+        padding: 0 12px;
+    }
+}
+
+/* Mobile nằm (landscape) */
+@media screen and (max-width: 800px) and (orientation: landscape) {
+    .menu-text {
+        min-height: 15px;
+    }
+    
     .sidebar {
+        width: 88%;
+        max-width: 290px;
         position: fixed;
-        left: -270px;
+        left: -100%;
         top: 0;
-        width: 260px;
         height: 100vh;
         z-index: 20;
         transition: left 0.25s ease;
@@ -621,49 +1147,58 @@ body.sidebar-open {
         display: block;
     }
 
+    .toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .app-layout {
+        display: block;
+    }
+
+    .brand-sub,
+    .menu-text,
+    .user-box > div {
+        display: block;
+    }
+
+    .brand-box,
+    .menu-item,
+    .user-box {
+        justify-content: flex-start;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .user-box {
+        grid-template-columns: 38px 1fr 28px;
+    }
+
+    .brand-title {
+        font-size: 18px;
+    }
+
+    .menu-text strong {
+        font-size: 14px;
+    }
+
+    .menu-text small {
+        font-size: 11px;
+    }
+
     .content-wrap {
-        padding: 12px;
+        padding: 8px;
     }
 
-    .page-title-group h1 {
-        font-size: 22px;
-    }
-
-    .page-title-group p {
-        font-size: 13px;
-    }
-
-    .page-title-row,
-    .table-toolbar {
-        flex-wrap: wrap;
-    }
-
-    .status-badge {
-        width: 100%;
-        text-align: center;
-    }
-
-    .filter-btn {
-        width: 100%;
-    }
-
-    .table-responsive {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .course-table {
-        min-width: 860px;
-    }
-}
-
-@media (max-width: 768px) {
     .top-header {
         height: 58px;
         padding: 0 10px;
     }
 
-    .toggle-btn,
     .notify-btn {
         width: 36px;
         height: 36px;
@@ -672,7 +1207,7 @@ body.sidebar-open {
 
     .page-title-row {
         border-radius: 14px 14px 0 0;
-        padding: 12px;
+        padding: 10px;
     }
 
     .title-icon {
@@ -683,6 +1218,7 @@ body.sidebar-open {
 
     .page-title-group {
         align-items: flex-start;
+        align-items: center;
     }
 
     .page-title-group h1 {
@@ -693,6 +1229,12 @@ body.sidebar-open {
         font-size: 12px;
     }
 
+    .status-badge {
+        text-align: center;
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
     .table-card {
         padding: 10px;
         border-radius: 0 0 14px 14px;
@@ -700,10 +1242,10 @@ body.sidebar-open {
 
     .table-toolbar {
         margin-bottom: 12px;
+        flex-wrap: wrap;
     }
 
-    .search-box,
-    .filter-btn {
+    .search-box {
         height: 40px;
         border-radius: 10px;
     }
@@ -800,23 +1342,3 @@ body.sidebar-open {
     }
 }
 
-@media (max-width: 480px) {
-    .content-wrap {
-        padding: 8px;
-    }
-
-    .page-title-row {
-        padding: 10px;
-    }
-
-    .status-badge {
-        font-size: 12px;
-        padding: 4px 8px;
-    }
-
-    .sidebar {
-        width: 88%;
-        max-width: 290px;
-        left: -100%;
-    }
-}
