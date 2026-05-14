@@ -1,8 +1,6 @@
-@import url("common.css");
-
 /* content.css - Phần 3: Content Area, Table, Filter, Pagination
-   Dùng cho phần nội dung riêng của từng trang: content-wrap, table, filter,
-   pagination, button trạng thái, và các style tùy biến theo từng màn hình. */
+    Dùng cho phần nội dung riêng của từng trang: content-wrap, table, filter,
+    pagination, button trạng thái, và các style tùy biến theo từng màn hình. */
 
 /* ========== Content Wrapper ========== */
 .content-wrap {

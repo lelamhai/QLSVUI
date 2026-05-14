@@ -1,16 +1,38 @@
-@import url("common.css");
+/* template.css - Phần 1 và 2: Sidebar + Notification */
 
-/* template.css - Phần 1 và 2: Layout, Sidebar, Header, Notification
-   Dùng cho phần giao diện chung: layout, sidebar, header, notify, shell.
-   Khi tái sử dụng cho trang khác, giữ phần này và thay content.html/content.css. */
+:root {
+    --sidebar-bg: linear-gradient(180deg, #005b4b 0%, #004136 100%);
+    --green: #12b886;
+    --green-dark: #0f9f74;
+    --bg-main: #f3f5f7;
+    --text-main: #1f2937;
+    --text-sub: #6b7280;
+    --line: #e9edf1;
+}
 
-/* ========== Root Variables ========== */
-/* Defined in common.css, used by all components */
+* {
+    box-sizing: border-box;
+}
 
-/* ========== Base Styles ========== */
-/* Base styles from common.css */
+body {
+    margin: 0;
+    font-family: 'Roboto', "Inter", "Segoe UI", Tahoma, Arial, sans-serif;
+    font-weight: 400;
+    color: var(--text-main);
+    background: var(--bg-main);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-/* ========== Layout & Structure ========== */
+body.sidebar-open {
+    overflow: hidden;
+}
+
+.app-layout {
+    display: block;
+    min-height: 100vh;
+}
+
 .sidebar {
     background: var(--sidebar-bg);
     color: #e8fff8;

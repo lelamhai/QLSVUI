@@ -89,8 +89,188 @@
                 </div>
             </header>
 
-            <!-- Gắn nội dung content.html vào đây -->
-            <!-- Ví dụ: dùng server-side include, component, hoặc copy nội dung content.html vào đúng vị trí này -->
+           <section class="content-wrap">
+    <div class="page-title-row">
+        <div class="page-title-group">
+            <div class="title-icon"><i class="fa-regular fa-square-plus"></i></div>
+            <div>
+                <h1>Đăng ký môn học</h1>
+            </div>
+        </div>
+        <span class="status-badge"><i class="fa-regular fa-eye"></i> Số tín chỉ: 0</span>
+    </div>
+
+    <div class="table-card">
+        <div class="table-toolbar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Tìm kiếm theo tên môn" />
+            </div>
+            <button class="filter-btn" id="filter-toggle" aria-expanded="false"><i class="fa-solid fa-filter"></i> Lọc</button>
+        </div>
+
+        <div class="filter-panel" id="filter-panel" aria-hidden="true">
+            <div class="filter-fields">
+                <div class="filter-group">
+                    <label for="semester">Học kỳ</label>
+                    <select id="semester" class="filter-select">
+                        <option value="">Tất cả học kỳ</option>
+                        <option value="hk1">HK1</option>
+                        <option value="hk2">HK2</option>
+                        <option value="hk3">HK3</option>
+                        <option value="hk4">HK4</option>
+                        <option value="hk5">HK5</option>
+                        <option value="hk6">HK6</option>
+                        <option value="hk7">HK7</option>
+                        <option value="hk8">HK8</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="classroom">Lớp học</label>
+                    <select id="classroom" class="filter-select">
+                        <option value="">Tất cả lớp học</option>
+                        <option value="cntt-01">CNTT-01</option>
+                        <option value="int1001-1">INT1001_1</option>
+                        <option value="int1001-2">INT1001_2</option>
+                        <option value="int1002-1">INT1002_1</option>
+                        <option value="int1002-2">INT1002_2</option>
+                        <option value="int1003-1">INT1003_1</option>
+                        <option value="int1003-2">INT1003_2</option>
+                        <option value="int1004-1">INT1004_1</option>
+                        <option value="int1004-2">INT1004_2</option>
+                        <option value="int1004-3">INT1004_3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>Mã lớp HP</th>
+                        <th>Môn học</th>
+                        <th>Giảng viên</th>
+                        <th>Học kỳ</th>
+                        <th>Sĩ số</th>
+                        <th>Lịch học</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="code">CNTT-01</td>
+                        <td><strong>Cấu trúc dữ liệu và giải thuật</strong><small>INT1002 · 4 TC</small></td>
+                        <td><i class="fa-regular fa-user"></i> Bùi Xuân Phúc</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td><i class="fa-solid fa-users"></i> 0/50</td>
+                        <td><strong>Thứ: 2, 4, 5</strong><small>01/03/2026 - 30/05/2026</small></td>
+                        <td><button class="register-btn">Đăng ký</button></td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1001_1</td>
+                        <td><strong>Nhập môn lập trình</strong><small>INT1001 · 3 TC</small></td>
+                        <td><i class="fa-regular fa-user"></i> Huỳnh Thanh Nam</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td><i class="fa-solid fa-users"></i> 25/50</td>
+                        <td><strong>Thứ: 3, 5</strong><small>05/03/2026 - 02/06/2026</small></td>
+                        <td><button class="register-btn">Đăng ký</button></td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1001_2</td>
+                        <td><strong>Nhập môn lập trình</strong><small>INT1001 · 3 TC</small></td>
+                        <td><i class="fa-regular fa-user"></i> Ngô Hoàng Đạt</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td><i class="fa-solid fa-users"></i> 29/50</td>
+                        <td><strong>Thứ: 2, 4</strong><small>03/03/2026 - 28/05/2026</small></td>
+                        <td><button class="register-btn">Đăng ký</button></td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1002_1</td>
+                        <td><strong>Cấu trúc dữ liệu và giải thuật</strong><small>INT1002 · 4 TC</small></td>
+                        <td><i class="fa-regular fa-user"></i> Ngô Hoàng Đạt</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td><i class="fa-solid fa-users"></i> 24/50</td>
+                        <td><strong>Thứ: 2, 4, 5</strong><small>15/05/2025 - 15/08/2025</small></td>
+                        <td><button class="register-btn">Đăng ký</button></td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1002_2</td>
+                        <td><strong>Cấu trúc dữ liệu và giải thuật</strong><small>INT1002 · 4 TC</small></td>
+                        <td><i class="fa-regular fa-user"></i> Bùi Xuân Quang</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td><i class="fa-solid fa-users"></i> 31/50</td>
+                        <td><strong>Thứ: 3, 5</strong><small>18/09/2024 - 15/12/2024</small></td>
+                        <td><button class="register-btn">Đăng ký</button></td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1003_1</td>
+                        <td><strong>Lập trình hướng đối tượng</strong><small>INT1003 · 3 TC</small></td>
+                        <td><i class="fa-regular fa-user"></i> Bùi Xuân Quang</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td><i class="fa-solid fa-users"></i> 35/50</td>
+                        <td><strong>Thứ: 2, 4</strong><small>18/09/2024 - 15/12/2024</small></td>
+                        <td><button class="register-btn">Đăng ký</button></td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1003_2</td>
+                        <td><strong>Lập trình hướng đối tượng</strong><small>INT1003 · 3 TC</small></td>
+                        <td><i class="fa-regular fa-user"></i> Lê Văn Khang</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td><i class="fa-solid fa-users"></i> 26/50</td>
+                        <td><strong>Thứ: 3, 5</strong><small>20/05/2025 - 20/08/2025</small></td>
+                        <td><button class="register-btn">Đăng ký</button></td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1004_1</td>
+                        <td><strong>Cơ sở dữ liệu</strong><small>INT1004 · 4 TC</small></td>
+                        <td><i class="fa-regular fa-user"></i> Lê Văn Khang</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td><i class="fa-solid fa-users"></i> 16/50</td>
+                        <td><strong>Thứ: 2, 4, 5</strong><small>20/05/2025 - 20/08/2025</small></td>
+                        <td><button class="register-btn">Đăng ký</button></td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1004_2</td>
+                        <td><strong>Cơ sở dữ liệu</strong><small>INT1004 · 4 TC</small></td>
+                        <td><i class="fa-regular fa-user"></i> Trần Phương Cường</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td><i class="fa-solid fa-users"></i> 22/50</td>
+                        <td><strong>Thứ: 3, 5</strong><small>01/03/2026 - 30/05/2026</small></td>
+                        <td><button class="register-btn">Đăng ký</button></td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1004_3</td>
+                        <td><strong>Cơ sở dữ liệu</strong><small>INT1004 · 4 TC</small></td>
+                        <td><i class="fa-regular fa-user"></i> Phan Xuân Nam</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td><i class="fa-solid fa-users"></i> 24/50</td>
+                        <td><strong>Thứ: 2, 4</strong><small>01/03/2026 - 30/05/2026</small></td>
+                        <td><button class="register-btn">Đăng ký</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination-wrapper">
+            <nav class="pagination">
+                <button class="pagination-btn pagination-prev" title="Trang trước">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="pagination-page active">1</button>
+                <button class="pagination-page">2</button>
+                <button class="pagination-page">3</button>
+                <span class="pagination-dots">...</span>
+                <button class="pagination-page">10</button>
+                <button class="pagination-btn pagination-next" title="Trang sau">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </nav>
+        </div>
+    </div>
+</section>
+
         </main>
     </div>
 
