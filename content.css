@@ -135,17 +135,21 @@
 
 .filter-group {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
 }
 
 .filter-group label {
     font-size: 13px;
     font-weight: 600;
     color: #4b5563;
+    min-width: 74px;
+    flex-shrink: 0;
 }
 
 .filter-select {
+    flex: 1;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -335,6 +339,21 @@
 @media screen and (max-width: 767px) {
     .filter-fields {
         grid-template-columns: 1fr;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .filter-group label {
+        min-width: 0;
+    }
+
+    .filter-select {
+        flex: initial;
+        width: 100%;
     }
 }
 
