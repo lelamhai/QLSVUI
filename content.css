@@ -448,7 +448,7 @@
 /* Tablet (tối ưu cho thiết bị nhỏ hơn 768px nhưng không phải là mobile) */
 @media screen and (min-width: 601px) and (max-width: 767px) {
     .course-table {
-        min-width: 860px;
+        min-width: 1024px;
     }
 
     .content-wrap {
@@ -575,6 +575,7 @@
         border-radius: 12px;
         box-shadow: 0 3px 8px rgba(15, 23, 42, 0.03);
         padding: 6px 10px;
+        margin-bottom: 15px;
     }
 
     .course-table td {
@@ -626,15 +627,17 @@
     }
 
     .course-table td:nth-child(7)::before {
-        content: "Thao tác";
+        content: "";
     }
 
     .course-table td strong {
         font-size: 15px;
+        text-align: left;
     }
 
     .course-table td small {
         font-size: 12px;
+        text-align: left;
     }
 
     .register-btn {
@@ -719,6 +722,7 @@
         border-radius: 12px;
         box-shadow: 0 3px 8px rgba(15, 23, 42, 0.03);
         padding: 6px 10px;
+        margin-bottom: 15px;
     }
 
     .course-table td {
@@ -770,15 +774,17 @@
     }
 
     .course-table td:nth-child(7)::before {
-        content: "Thao tác";
+        content: "";
     }
 
     .course-table td strong {
         font-size: 15px;
+        text-align: left;
     }
 
     .course-table td small {
         font-size: 12px;
+        text-align: left;
     }
 
     .register-btn {

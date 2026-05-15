@@ -1,7 +1,7 @@
 .register-btn.cancel-btn {
-    background: #d1fae5;
+    background: #fee2e2;
     border: none;
-    color: #059669;
+    color: #b91c1c;
     gap: 6px;
     height: 34px;
     font-size: 13px;
@@ -17,23 +17,22 @@
 
 .register-btn.cancel-btn i {
     font-size: 13px;
-    color: #10b981;
+    color: #ef4444;
 }
 
 .register-btn.cancel-btn:hover {
-    background: #a7f3d0;
-    border-color: #059669;
-    box-shadow: 0 1px 3px rgba(16, 185, 129, 0.2);
+    background: #fecaca;
+    border-color: #b91c1c;
+    box-shadow: 0 1px 3px rgba(185, 28, 28, 0.18);
 }
 
 .register-btn.cancel-btn:active {
-    background: #6ee7b7;
+    background: #fca5a5;
     transform: scale(0.98);
 }
 
 .course-summary {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
     gap: 12px;
     margin: 14px 0 18px;
 }
@@ -47,6 +46,7 @@
     align-items: center;
     gap: 12px;
     box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    flex: 1;
 }
 
 .summary-icon {
@@ -55,8 +55,8 @@
     border-radius: 14px;
     display: grid;
     place-items: center;
-    background: #eef8e7;
-    color: #78a756;
+    background: #e4f8f2;
+    color: var(--green);
     flex-shrink: 0;
     font-size: 18px;
 }
@@ -80,24 +80,12 @@
     line-height: 1.1;
 }
 
-/* Cập nhật nhãn cột trên mobile (vì đã xóa 2 cột) */
+/* Responsive cho mobile và tablet */
 @media screen and (max-width: 600px) {
-    .course-table td:nth-child(4)::before {
-        content: "Lịch học";
-    }
-
-    .course-table td:nth-child(5)::before {
-        content: "Thao tác";
-    }
-
-    .course-summary {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
     .summary-card {
         padding: 12px 14px;
         border-radius: 14px;
+        flex: 1;
     }
 
     .summary-icon {
@@ -109,5 +97,53 @@
 
     .summary-content strong {
         font-size: 16px;
+    }
+}
+
+
+
+/* Mobile đứng (portrait) */
+@media screen and (max-width: 600px) and (orientation: portrait) {
+    .course-table td:nth-child(1)::before {
+        content: "Mã lớp HP";
+    }
+    .course-table td:nth-child(2)::before {
+        content: "Môn học";
+    }
+
+    .course-table td:nth-child(3)::before {
+        content: "Giảng viên";
+    }
+    .course-table td:nth-child(4)::before {
+        content: "Lịch học";
+    }
+    .course-table td:nth-child(5)::before {
+        content: "Ngày đăng ký";
+    }
+    .course-table td:nth-child(6)::before {
+        content: "";
+    }
+}
+
+/* Mobile nằm (landscape) */
+@media screen and (max-width: 800px) and (orientation: landscape) {
+     .course-table td:nth-child(1)::before {
+        content: "Mã lớp HP";
+    }
+    .course-table td:nth-child(2)::before {
+        content: "Môn học";
+    }
+
+    .course-table td:nth-child(3)::before {
+        content: "Giảng viên";
+    }
+    .course-table td:nth-child(4)::before {
+        content: "Lịch học";
+    }
+    .course-table td:nth-child(5)::before {
+        content: "Ngày đăng ký";
+    }
+    .course-table td:nth-child(6)::before {
+        content: "";
     }
 }

@@ -218,6 +218,29 @@
     display: inline-block;
 }
 
+/* Term and Academic Year Badge Styles */
+.term {
+    display: inline-block;
+    background: #dbeafe;
+    color: #0284c7;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.academic-year {
+    display: inline-block;
+    background: #fed7aa;
+    color: #b45309;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
 /* Mobile table label override for score table */
 @media screen and (max-width: 600px) and (orientation: portrait) {
     .course-table td:nth-child(1)::before {
@@ -354,3 +377,89 @@
 }
 
 
+
+/* Mobile đứng (portrait) */
+@media screen and (max-width: 600px) and (orientation: portrait) {
+    .course-table td:nth-child(1)::before {
+        content: "STT";
+    }
+
+    .course-table td:nth-child(2)::before {
+        content: "Môn học";
+    }
+
+    .course-table td:nth-child(3)::before {
+        content: "Học kỳ";
+    }
+
+    .course-table td:nth-child(4)::before {
+        content: "Niên khóa";
+    }
+
+    .course-table td:nth-child(5)::before {
+        content: "Chuyên cần";
+    }
+
+    .course-table td:nth-child(6)::before {
+        content: "Giữa kỳ";
+    }
+
+    .course-table td:nth-child(7)::before {
+        content: "Cuối kỳ";
+    }
+
+    .course-table td:nth-child(8)::before {
+        content: "Điểm tổng";
+    }
+
+    .course-table td:nth-child(9)::before {
+        content: "Xếp loại";
+    }
+
+    .course-table td:nth-child(10)::before {
+        content: "Kết quả";
+    }
+}
+
+/* Mobile nằm (landscape) */
+@media screen and (max-width: 800px) and (orientation: landscape) {
+    .course-table td:nth-child(1)::before {
+        content: "STT";
+    }
+
+    .course-table td:nth-child(2)::before {
+        content: "Môn học";
+    }
+
+    .course-table td:nth-child(3)::before {
+        content: "Học kỳ";
+    }
+
+    .course-table td:nth-child(4)::before {
+        content: "Niên khóa";
+    }
+
+    .course-table td:nth-child(5)::before {
+        content: "Chuyên cần";
+    }
+
+    .course-table td:nth-child(6)::before {
+        content: "Giữa kỳ";
+    }
+
+    .course-table td:nth-child(7)::before {
+        content: "Cuối kỳ";
+    }
+
+    .course-table td:nth-child(8)::before {
+        content: "Điểm tổng";
+    }
+
+    .course-table td:nth-child(9)::before {
+        content: "Xếp loại";
+    }
+
+    .course-table td:nth-child(10)::before {
+        content: "Kết quả";
+    }
+}

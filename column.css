@@ -1,0 +1,62 @@
+
+/* Mobile đứng (portrait) */
+@media screen and (max-width: 600px) and (orientation: portrait) {
+    .course-table td:nth-child(1)::before {
+        content: "Mã lớp HP";
+    }
+
+    .course-table td:nth-child(2)::before {
+        content: "Môn học";
+    }
+
+    .course-table td:nth-child(3)::before {
+        content: "Giảng viên";
+    }
+
+    .course-table td:nth-child(4)::before {
+        content: "Học kỳ";
+    }
+
+    .course-table td:nth-child(5)::before {
+        content: "Sĩ số";
+    }
+
+    .course-table td:nth-child(6)::before {
+        content: "Lịch học";
+    }
+
+    .course-table td:nth-child(7)::before {
+        content: "Thao tác";
+    }
+}
+
+/* Mobile nằm (landscape) */
+@media screen and (max-width: 800px) and (orientation: landscape) {
+    .course-table td:nth-child(1)::before {
+        content: "Mã lớp HP";
+    }
+
+    .course-table td:nth-child(2)::before {
+        content: "Môn học";
+    }
+
+    .course-table td:nth-child(3)::before {
+        content: "Giảng viên";
+    }
+
+    .course-table td:nth-child(4)::before {
+        content: "Học kỳ";
+    }
+
+    .course-table td:nth-child(5)::before {
+        content: "Sĩ số";
+    }
+
+    .course-table td:nth-child(6)::before {
+        content: "Lịch học";
+    }
+
+    .course-table td:nth-child(7)::before {
+        content: "Thao tác";
+    }
+}
