@@ -34,7 +34,7 @@
                             const current = Number(seatMatch[1]);
                             const max = Number(seatMatch[2]);
                             const next = Math.min(current + 1, max);
-                            seatsCell.innerHTML = '<i class="fa-solid fa-users"></i> ' + next + '/' + max;
+                            seatsCell.innerHTML =  next + '/' + max;
                         }
                     }
                 }
