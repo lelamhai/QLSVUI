@@ -1,0 +1,534 @@
+/* Dashboard-specific styles */
+
+.dashboard-wrap {
+    padding-top: 14px;
+    padding-bottom: 18px;
+}
+
+.dashboard-hero {
+    border-radius: 18px 18px 0 0;
+}
+
+.dashboard-term-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin: 14px 0 18px;
+}
+
+.dashboard-stat-card {
+    background: linear-gradient(180deg, #ffffff 0%, #fbfffd 100%);
+    border: 1px solid #e7eaee;
+    border-radius: 16px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.dashboard-stat-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgba(18, 184, 134, 0.1);
+    color: var(--green);
+    flex-shrink: 0;
+    font-size: 18px;
+}
+
+.dashboard-stat-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dashboard-stat-label {
+    color: var(--text-sub);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.dashboard-stat-content strong {
+    color: #1f2937;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(290px, 0.95fr);
+    gap: 16px;
+}
+
+.dashboard-bottom-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.dashboard-panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+.dashboard-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.dashboard-panel-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.dashboard-panel-header p {
+    margin: 4px 0 0;
+    color: var(--text-sub);
+    font-size: 13px;
+}
+
+.dashboard-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.dashboard-action-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #e8ecf1;
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfffd 100%);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.dashboard-action-card:hover {
+    border-color: rgba(18, 184, 134, 0.45);
+    box-shadow: 0 8px 20px rgba(18, 184, 134, 0.08);
+    transform: translateY(-1px);
+}
+
+.dashboard-action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    flex-shrink: 0;
+    font-size: 18px;
+}
+
+.action-register { background: linear-gradient(135deg, #12b886 0%, #0ea972 100%); }
+.action-course { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+.action-score { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+.action-paid { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); }
+
+.dashboard-action-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.dashboard-action-content h3 {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.dashboard-action-content p {
+    margin: 0;
+    color: var(--text-sub);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.dashboard-action-arrow {
+    color: #aab3bc;
+}
+
+.dashboard-right-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.student-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid #e8ecf1;
+    border-radius: 16px;
+    background: #f9fbfc;
+    margin-bottom: 12px;
+}
+
+.student-avatar {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #12b886 0%, #0f9f74 100%);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.student-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.student-info strong {
+    font-size: 17px;
+    color: #1f2937;
+}
+
+.student-info span,
+.student-info small {
+    color: var(--text-sub);
+    font-size: 13px;
+}
+
+.student-detail-list {
+    display: grid;
+    gap: 10px;
+}
+
+.student-detail-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid #edf1f5;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.student-detail-label {
+    color: var(--text-sub);
+    font-size: 13px;
+}
+
+.student-detail-item strong {
+    color: #1f2937;
+    font-size: 13px;
+    text-align: right;
+}
+
+.reminder-list {
+    display: grid;
+    gap: 12px;
+}
+
+.reminder-item {
+    display: flex;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #edf1f5;
+    border-radius: 16px;
+    background: #fff;
+}
+
+.reminder-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgba(18, 184, 134, 0.1);
+    color: var(--green);
+    flex-shrink: 0;
+}
+
+.reminder-content strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 15px;
+    color: #1f2937;
+}
+
+.reminder-content p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.45;
+}
+
+.quick-links {
+    display: grid;
+    gap: 10px;
+}
+
+.quick-link-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid #edf1f5;
+    border-radius: 14px;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    transition: all 0.18s ease;
+}
+
+.quick-link-item:hover {
+    border-color: rgba(18, 184, 134, 0.45);
+    background: #fafffd;
+}
+
+.quick-link-item > span {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: #e4f8f2;
+    color: var(--green);
+    flex-shrink: 0;
+}
+
+.quick-link-item strong {
+    display: block;
+    font-size: 14px;
+    color: #1f2937;
+}
+
+.quick-link-item small {
+    color: var(--text-sub);
+    font-size: 12px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .dashboard-wrap {
+        padding-top: 12px;
+        padding-bottom: 14px;
+    }
+
+    .page-title-row.dashboard-hero {
+        gap: 10px;
+    }
+
+    .dashboard-term-badge {
+        justify-content: flex-start;
+        padding-top: 0;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 12px 0 14px;
+    }
+
+    .dashboard-grid,
+    .dashboard-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-panel {
+        padding: 14px;
+    }
+
+    .dashboard-panel-header h2 {
+        font-size: 17px;
+    }
+
+    .student-card {
+        padding: 12px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .dashboard-stats,
+    .dashboard-grid,
+    .dashboard-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .dashboard-wrap {
+        padding-top: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .page-title-row.dashboard-hero {
+        gap: 10px;
+        align-items: center;
+        padding: 14px;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .page-title-group {
+        flex: 1;
+    }
+
+    .dashboard-term-badge {
+        justify-content: flex-start;
+        white-space: nowrap;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+        margin: 12px 0 14px;
+    }
+
+    .dashboard-grid,
+    .dashboard-bottom-grid,
+    .dashboard-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-panel,
+    .dashboard-stat-card,
+    .dashboard-action-card,
+    .reminder-item,
+    .student-card,
+    .quick-link-item {
+        border-radius: 14px;
+    }
+
+    .page-title-group h1 {
+        font-size: 22px;
+    }
+
+    .page-title-group p {
+        font-size: 13px;
+    }
+
+    .dashboard-panel-header {
+        margin-bottom: 12px;
+    }
+
+    .dashboard-panel-header {
+        flex-direction: column;
+    }
+
+    .dashboard-action-card {
+        align-items: flex-start;
+    }
+
+    .dashboard-action-arrow {
+        display: none;
+    }
+
+    .student-detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .student-detail-item strong {
+        text-align: left;
+    }
+
+    .quick-link-item {
+        align-items: flex-start;
+    }
+
+    .notification-panel {
+        width: calc(100vw - 24px);
+        right: 12px;
+        max-width: 360px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .dashboard-wrap {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .dashboard-panel,
+    .dashboard-stat-card,
+    .dashboard-action-card,
+    .reminder-item,
+    .student-card,
+    .quick-link-item {
+        padding: 12px;
+    }
+
+    .dashboard-stat-icon,
+    .dashboard-action-icon,
+    .reminder-icon,
+    .quick-link-item > span {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+    }
+
+    .dashboard-stat-content strong {
+        font-size: 16px;
+    }
+
+    .dashboard-action-content h3,
+    .reminder-content strong {
+        font-size: 14px;
+    }
+
+    .dashboard-action-content p,
+    .reminder-content p,
+    .quick-link-item small,
+    .student-info span,
+    .student-info small,
+    .student-detail-label,
+    .student-detail-item strong {
+        font-size: 12px;
+    }
+
+    .student-avatar {
+        width: 52px;
+        height: 52px;
+        font-size: 16px;
+    }
+
+    .student-info strong {
+        font-size: 16px;
+    }
+
+    .page-title-group h1 {
+        font-size: 20px;
+    }
+
+    .page-title-group p {
+        font-size: 12px;
+    }
+
+    .dashboard-panel-header h2 {
+        font-size: 16px;
+    }
+}
