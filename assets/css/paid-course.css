@@ -76,7 +76,7 @@
         content: "Đã thu";
     }
     .course-table td:nth-child(6)::before {
-        content: "Dư";
+        content: "Tiền dư";
     }
 }
 
@@ -98,7 +98,7 @@
         content: "Đã thu";
     }
     .course-table td:nth-child(6)::before {
-        content: "Dư";
+        content: "Tiền dư";
     }
 }
 

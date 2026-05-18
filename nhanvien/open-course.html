@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý lớp học phần</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="../assets/css/template.css" rel="stylesheet">
+    <link href="../assets/css/content.css" rel="stylesheet">
+    <link href="../assets/css/open-course.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker3.min.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand-box">
+                <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div>
+                    <div class="brand-title">NV000001</div>
+                    <div class="brand-sub">Nguyễn Ngọc Phương Thảo</div>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <a href="index.html" class="menu-item">
+                    <span class="menu-icon"><i class="fa-solid fa-border-all"></i></span>
+                    <span class="menu-text"><strong>Trang chủ</strong></span>
+                </a>
+                <a href="register-course.html" class="menu-item active">
+                    <span class="menu-icon"><i class="fa-regular fa-clipboard"></i></span>
+                    <span class="menu-text"><strong>Quản lý học phần</strong></span>
+                </a>
+                <a href="my-course.html" class="menu-item">
+                    <span class="menu-icon"><i class="fa-regular fa-square-check"></i></span>
+                    <span class="menu-text"><strong>Môn đã đăng ký</strong></span>
+                </a>
+                <a href="my-score.html" class="menu-item">
+                    <span class="menu-icon"><i class="fa-solid fa-trophy"></i></span>
+                    <span class="menu-text"><strong>Bảng điểm</strong></span>
+                </a>
+                <a href="paid-course.html" class="menu-item">
+                    <span class="menu-icon"><i class="fa-solid fa-money-bill-wave"></i></span>
+                    <span class="menu-text"><strong>Học phí</strong></span>
+                </a>
+                <a href="/logout" class="menu-item logout-item">
+                    <span class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+                    <span class="menu-text"><strong>Đăng xuất</strong></span>
+                </a>
+            </nav>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+        <main class="main-content">
+            <header class="top-header">
+                <button class="toggle-btn" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+                <button class="notify-btn" id="notify-toggle"><i class="fa-regular fa-bell"></i><span class="notify-badge">3</span></button>
+                <div class="notification-panel" id="notification-panel" aria-hidden="true">
+                    <div class="notification-header">
+                        <h3>Thông báo</h3>
+                        <a href="#" class="mark-all-read">Đánh dấu tất cả</a>
+                    </div>
+                    <div class="notification-list">
+                        <div class="notification-item">
+                            <div class="notification-icon"><i class="fa-solid fa-bookmark"></i></div>
+                            <div class="notification-content">
+                                <div class="notification-title">Điểm đã được cập nhật!</div>
+                                <div class="notification-description">Điểm môn Cấu trúc dữ liệu và giải thuật...</div>
+                                <div class="notification-date">29/1/2026</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon"><i class="fa-solid fa-bookmark"></i></div>
+                            <div class="notification-content">
+                                <div class="notification-title">Điểm đã được cập nhật!</div>
+                                <div class="notification-description">Điểm môn Cơ sở dữ liệu...</div>
+                                <div class="notification-date">28/1/2026</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon"><i class="fa-solid fa-bookmark"></i></div>
+                            <div class="notification-content">
+                                <div class="notification-title">Điểm đã được cập nhật!</div>
+                                <div class="notification-description">Điểm môn Lập trình hướng đối tượng...</div>
+                                <div class="notification-date">27/1/2026</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+           <section class="content-wrap">
+    <div class="page-title-row">
+        <div class="page-title-group">
+            <div class="title-icon"><i class="fa-regular fa-square-plus"></i></div>
+            <div>
+                <h1>Quản lý học phần</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-card">
+        <div class="table-toolbar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Tìm kiếm theo tên môn" />
+            </div>
+                <div class="toolbar-actions">
+                    <button class="filter-btn" id="filter-toggle" aria-expanded="false"><i class="fa-solid fa-filter"></i> Lọc</button>
+                    <button class="add-course-btn" type="button" id="add-course-btn">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        <span>Mở môn mới</span>
+                    </button>
+                </div>
+        </div>
+
+        <div class="filter-panel" id="filter-panel" aria-hidden="true">
+            <div class="filter-fields">
+                <div class="filter-group">
+                    <label for="classroom">Lớp học</label>
+                    <select id="classroom" class="filter-select">
+                        <option value="">Tất cả lớp học</option>
+                        <option value="cntt-01">CNTT-01</option>
+                        <option value="int1001-1">INT1001_1</option>
+                        <option value="int1001-2">INT1001_2</option>
+                        <option value="int1002-1">INT1002_1</option>
+                        <option value="int1002-2">INT1002_2</option>
+                        <option value="int1003-1">INT1003_1</option>
+                        <option value="int1003-2">INT1003_2</option>
+                        <option value="int1004-1">INT1004_1</option>
+                        <option value="int1004-2">INT1004_2</option>
+                        <option value="int1004-3">INT1004_3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>Mã lớp HP</th>
+                        <th>Môn học</th>
+                        <th>Giảng viên</th>
+                        <th>Học kỳ</th>
+                        <th>Sĩ số</th>
+                        <th>Lịch học</th>
+                        <th class="actions-header"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="code">CNTT-01</td>
+                        <td><strong>Cấu trúc dữ liệu và giải thuật</strong><small>INT1002 · 4 TC</small></td>
+                        <td>Bùi Xuân Phúc</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td>0/50</td>
+                        <td><strong>Thứ: 2, 4, 5</strong><small>01/03/2026 - 30/05/2026</small></td>
+                        <td class="actions-cell">
+                            <div class="course-actions">
+                                <button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học phần">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học phần">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1001_1</td>
+                        <td><strong>Nhập môn lập trình</strong><small>INT1001 · 3 TC</small></td>
+                        <td>Huỳnh Thanh Nam</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td>25/50</td>
+                        <td><strong>Thứ: 3, 5</strong><small>05/03/2026 - 02/06/2026</small></td>
+                        <td class="actions-cell">
+                            <div class="course-actions">
+                                <button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học phần">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học phần">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1001_2</td>
+                        <td><strong>Nhập môn lập trình</strong><small>INT1001 · 3 TC</small></td>
+                        <td>Ngô Hoàng Đạt</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td>29/50</td>
+                        <td><strong>Thứ: 2, 4</strong><small>03/03/2026 - 28/05/2026</small></td>
+                        <td class="actions-cell">
+                            <div class="course-actions">
+                                <button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học phần">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học phần">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1002_1</td>
+                        <td><strong>Cấu trúc dữ liệu và giải thuật</strong><small>INT1002 · 4 TC</small></td>
+                        <td>Ngô Hoàng Đạt</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td>24/50</td>
+                        <td><strong>Thứ: 2, 4, 5</strong><small>15/05/2025 - 15/08/2025</small></td>
+                        <td class="actions-cell">
+                            <div class="course-actions">
+                                <button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học phần">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học phần">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1002_2</td>
+                        <td><strong>Cấu trúc dữ liệu và giải thuật</strong><small>INT1002 · 4 TC</small></td>
+                        <td>Bùi Xuân Quang</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td>31/50</td>
+                        <td><strong>Thứ: 3, 5</strong><small>18/09/2024 - 15/12/2024</small></td>
+                        <td class="actions-cell">
+                            <div class="course-actions">
+                                <button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học phần">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học phần">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1003_1</td>
+                        <td><strong>Lập trình hướng đối tượng</strong><small>INT1003 · 3 TC</small></td>
+                        <td>Bùi Xuân Quang</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td>35/50</td>
+                        <td><strong>Thứ: 2, 4</strong><small>18/09/2024 - 15/12/2024</small></td>
+                        <td class="actions-cell">
+                            <div class="course-actions">
+                                <button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học phần">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học phần">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1003_2</td>
+                        <td><strong>Lập trình hướng đối tượng</strong><small>INT1003 · 3 TC</small></td>
+                        <td>Lê Văn Khang</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td>26/50</td>
+                        <td><strong>Thứ: 3, 5</strong><small>20/05/2025 - 20/08/2025</small></td>
+                        <td class="actions-cell">
+                            <div class="course-actions">
+                                <button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học phần">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học phần">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1004_1</td>
+                        <td><strong>Cơ sở dữ liệu</strong><small>INT1004 · 4 TC</small></td>
+                        <td>Lê Văn Khang</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td>16/50</td>
+                        <td><strong>Thứ: 2, 4, 5</strong><small>20/05/2025 - 20/08/2025</small></td>
+                        <td class="actions-cell">
+                            <div class="course-actions">
+                                <button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học phần">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học phần">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1004_2</td>
+                        <td><strong>Cơ sở dữ liệu</strong><small>INT1004 · 4 TC</small></td>
+                        <td>Trần Phương Cường</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td>22/50</td>
+                        <td><strong>Thứ: 3, 5</strong><small>01/03/2026 - 30/05/2026</small></td>
+                        <td class="actions-cell">
+                            <div class="course-actions">
+                                <button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học phần">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học phần">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="code">INT1004_3</td>
+                        <td><strong>Cơ sở dữ liệu</strong><small>INT1004 · 4 TC</small></td>
+                        <td>Phan Xuân Nam</td>
+                        <td><span class="term">Học Kỳ 1</span></td>
+                        <td>24/50</td>
+                        <td><strong>Thứ: 2, 4</strong><small>01/03/2026 - 30/05/2026</small></td>
+                        <td class="actions-cell">
+                            <div class="course-actions">
+                                <button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học phần">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học phần">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination-wrapper">
+            <nav class="pagination">
+                <button class="pagination-btn pagination-prev" title="Trang trước">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="pagination-page active">1</button>
+                <button class="pagination-page">2</button>
+                <button class="pagination-page">3</button>
+                <span class="pagination-dots">...</span>
+                <button class="pagination-page">10</button>
+                <button class="pagination-btn pagination-next" title="Trang sau">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </nav>
+        </div>
+    </div>
+</section>
+
+        </main>
+    </div>
+
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/content.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="../assets/js/open-course.js"></script>
+
+    <!-- Slide-in Add Course Panel -->
+    <div class="slide-panel-overlay" id="add-panel-overlay" aria-hidden="true"></div>
+    <aside class="slide-panel" id="add-course-panel" aria-hidden="true" role="dialog" aria-label="Thêm mới môn học">
+        <div class="slide-panel-header">
+            <h3>Thêm mới môn học</h3>
+            <button type="button" class="close-panel" id="close-add-panel" aria-label="Đóng">&times;</button>
+        </div>
+        <form id="add-course-form" class="slide-panel-body">
+            <div class="form-row">
+                <label for="add-academic-year">Niên khóa</label>
+                <input type="text" id="add-academic-year" class="year-picker" placeholder="Chọn năm" />
+            </div>
+            <div class="form-row">
+                <label for="add-term">Học kỳ</label>
+                <select id="add-term" class="filter-select">
+                    <option>Học Kỳ 1</option>
+                    <option>Học Kỳ 2</option>
+                    <option>Học Kỳ Hè</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="add-course-name">Tên môn học</label>
+                <select id="add-course-name" class="filter-select">
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="add-lecturer">Giảng viên</label>
+                <select id="add-lecturer" class="filter-select">
+                </select>
+            </div>
+            <div class="form-row two-cols">
+                <div>
+                    <label for="add-max-size">Sĩ số tối đa</label>
+                    <input type="number" id="add-max-size" min="0" />
+                </div>
+                <div>
+                    <label for="add-weekdays">Dạy thứ (ví dụ: Thứ 2,4,5)</label>
+                    <input type="text" id="add-weekdays" />
+                </div>
+            </div>
+            <div class="form-row two-cols">
+                <div>
+                    <label for="add-start-date">Thời gian bắt đầu</label>
+                    <input type="text" id="add-start-date" class="date-picker" />
+                </div>
+                <div>
+                    <label for="add-end-date">Thời gian kết thúc</label>
+                    <input type="text" id="add-end-date" class="date-picker" />
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="add-status">Trạng thái</label>
+                <select id="add-status" class="filter-select">
+                    <option value="open">Mở</option>
+                    <option value="closed">Đóng</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="button" id="submit-add-course" class="add-course-btn">Thêm mới</button>
+                <button type="button" id="cancel-add-course" class="filter-btn">Hủy</button>
+            </div>
+        </form>
+    </aside>
+</body>
+</html>
