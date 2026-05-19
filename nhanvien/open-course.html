@@ -372,7 +372,7 @@
         <form id="add-course-form" class="slide-panel-body">
             <div class="form-row">
                 <label for="add-academic-year">Niên khóa</label>
-                <input type="text" id="add-academic-year" class="year-picker" placeholder="Chọn năm" />
+                <input type="text" id="add-academic-year" class="year-picker"/>
             </div>
             <div class="form-row">
                 <label for="add-term">Học kỳ</label>
@@ -422,6 +422,68 @@
             <div class="form-actions">
                 <button type="button" id="submit-add-course" class="add-course-btn">Thêm mới</button>
                 <button type="button" id="cancel-add-course" class="filter-btn">Hủy</button>
+            </div>
+        </form>
+    </aside>
+
+    <!-- Slide-in Edit Course Panel -->
+    <div class="slide-panel-overlay" id="edit-panel-overlay" aria-hidden="true"></div>
+    <aside class="slide-panel" id="edit-course-panel" aria-hidden="true" role="dialog" aria-label="Chỉnh sửa môn học">
+        <div class="slide-panel-header">
+            <h3>Chỉnh sửa môn học</h3>
+            <button type="button" class="close-panel" id="close-edit-panel" aria-label="Đóng">&times;</button>
+        </div>
+        <form id="edit-course-form" class="slide-panel-body">
+            <div class="form-row">
+                <label for="edit-academic-year">Niên khóa</label>
+                <input type="text" id="edit-academic-year" class="year-picker" />
+            </div>
+            <div class="form-row">
+                <label for="edit-term">Học kỳ</label>
+                <select id="edit-term" class="filter-select">
+                    <option>Học Kỳ 1</option>
+                    <option>Học Kỳ 2</option>
+                    <option>Học Kỳ Hè</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="edit-course-name">Tên môn học</label>
+                <select id="edit-course-name" class="filter-select"></select>
+            </div>
+            <div class="form-row">
+                <label for="edit-lecturer">Giảng viên</label>
+                <select id="edit-lecturer" class="filter-select"></select>
+            </div>
+            <div class="form-row two-cols">
+                <div>
+                    <label for="edit-max-size">Sĩ số tối đa</label>
+                    <input type="number" id="edit-max-size" min="0" />
+                </div>
+                <div>
+                    <label for="edit-weekdays">Dạy thứ (ví dụ: Thứ 2,4,5)</label>
+                    <input type="text" id="edit-weekdays" />
+                </div>
+            </div>
+            <div class="form-row two-cols">
+                <div>
+                    <label for="edit-start-date">Thời gian bắt đầu</label>
+                    <input type="text" id="edit-start-date" class="date-picker" />
+                </div>
+                <div>
+                    <label for="edit-end-date">Thời gian kết thúc</label>
+                    <input type="text" id="edit-end-date" class="date-picker" />
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="edit-status">Trạng thái</label>
+                <select id="edit-status" class="filter-select">
+                    <option value="open">Mở</option>
+                    <option value="closed">Đóng</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="button" id="submit-edit-course" class="add-course-btn">Lưu thay đổi</button>
+                <button type="button" id="cancel-edit-course" class="filter-btn">Hủy</button>
             </div>
         </form>
     </aside>

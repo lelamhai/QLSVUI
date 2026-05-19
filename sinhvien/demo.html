@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Demo Lịch Học</title>
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  #view-toggle {
+    margin-bottom: 15px;
+  }
+  #view-toggle button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  .fc-event {
+    font-size: 0.9em;
+    padding: 2px 4px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Demo Lịch Học Sinh Viên</h2>
+
+<div id="view-toggle">
+  <button onclick="changeView('timeGridWeek')">Xem theo tuần</button>
+  <button onclick="changeView('dayGridMonth')">Xem theo tháng</button>
+</div>
+
+<div id="calendar"></div>
+
+<script>
+  // Khởi tạo lịch FullCalendar
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'timeGridWeek', // bắt đầu là tuần
+    height: 'auto',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: ''
+    },
+    slotMinTime: '07:00:00',
+    slotMaxTime: '22:00:00',
+    allDaySlot: false,
+    events: [
+      {
+        title: 'Quản lý dự án phần mềm\nNhóm: 10\nPhòng: lopmonhoc22-ID: 7270745873\nGV: Nguyễn Anh Hào\nLink online',
+        start: '2026-05-04T19:00:00',
+        end: '2026-05-04T21:50:00',
+        backgroundColor: '#add8e6',
+        borderColor: '#5dade2'
+      }
+    ],
+    eventClick: function(info) {
+      alert(info.event.title);
+    }
+  });
+
+  calendar.render();
+
+  // Hàm đổi view
+  function changeView(viewName) {
+    calendar.changeView(viewName);
+  }
+</script>
+
+</body>
+</html>
