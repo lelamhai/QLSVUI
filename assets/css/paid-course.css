@@ -78,6 +78,9 @@
     .course-table td:nth-child(6)::before {
         content: "Tiền dư";
     }
+    .course-table td:nth-child(7)::before {
+        content: "QR";
+    }
 }
 
 /* Mobile nằm (landscape) */
@@ -100,6 +103,61 @@
     .course-table td:nth-child(6)::before {
         content: "Tiền dư";
     }
+    .course-table td:nth-child(7)::before {
+        content: "QR";
+    }
+}
+
+/* QR button and modal styles */
+.qr-btn {
+    border: 0;
+    background: linear-gradient(135deg,#3b82f6 0%,#2563eb 100%);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.qr-btn:active { transform: translateY(1px); }
+.qr-btn:hover { box-shadow: 0 6px 14px rgba(37,99,235,0.18); }
+
+.qr-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+}
+.qr-modal.show { display: flex; }
+.qr-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+.qr-modal-content {
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    max-width: 520px;
+    width: 90%;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.qr-modal-content img { max-width: 100%; max-height: 80vh; display: block; }
+.qr-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: transparent;
+    border: 0;
+    font-size: 22px;
+    cursor: pointer;
+    color: #374151;
 }
 
 /* Term and Academic Year Badge Styles (copied from my-score) */

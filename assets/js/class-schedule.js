@@ -68,8 +68,21 @@ document.addEventListener('DOMContentLoaded', function () {
 				}
 			},
 			{
-				title: 'Cấu trúc dữ liệu và giải thuật',
+				title: 'Cấu trúc dữ liệu và giải thuật 1',
 				start: '2026-06-05T07:00:00',
+				end: '2026-06-05T09:00:00',
+				backgroundColor: '#34d399',
+				borderColor: '#34d399',
+				extendedProps: {
+					room: 'Phòng: C201',
+					teacher: 'GV: Trần Thị Minh',
+					group: 'Nhóm: 03',
+					mode: 'Trực tiếp'
+				}
+			},
+			{
+				title: 'Cấu trúc dữ liệu và giải thuật',
+				start: '2026-06-05T09:00:00',
 				end: '2026-06-05T12:00:00',
 				backgroundColor: '#34d399',
 				borderColor: '#34d399',
