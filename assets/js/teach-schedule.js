@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		eventDisplay: 'block',
 		locale: 'vi',
 		firstDay: 1,
-		selectable: false,
 		height: 'auto',
 		nowIndicator: false,
 		expandRows: false,
@@ -44,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			{
 				title: 'Môn học quản lý dự án phần mềm',
 				start: '2026-05-04T19:00:00',
-				end: '2026-05-04T21:50:00',
+				end: '2026-05-04T21:00:00',
 				backgroundColor: '#5dade2',
 				borderColor: '#5dade2',
 				extendedProps: {
@@ -98,15 +97,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			const timeText = arg.timeText ? `<div class="schedule-event__meta">${arg.timeText}</div>` : '';
 			const roomText = arg.event.extendedProps.room ? `<div class="schedule-event__meta">${arg.event.extendedProps.room}</div>` : '';
 			const title = arg.event.title || '';
-			const isMonthView = arg.view && arg.view.type === 'dayGridMonth';
-			const compactMeta = isMonthView ? '' : roomText;
 
 			return {
 				html: `
 					<div class="schedule-event">
 						<div class="schedule-event__title">${title}</div>
 						${timeText}
-						${compactMeta}
+						${roomText}
 					</div>
 				`
 			};
@@ -122,7 +119,14 @@ document.addEventListener('DOMContentLoaded', function () {
 			].filter(Boolean).join('\n');
 
 			alert(details);
-		},
+		}
+		,
+		// Debug hook: runs after event elements are added to the DOM
+		eventDidMount: function(info) {
+			// logs which view the event was mounted into
+			console.log('FC:eventDidMount', info.event.title, info.view && info.view.type);
+		}
+		,
 		// customize title formatting: dd/mm - dd/mm, yyyy
 		datesSet: function(info) {
 			try {
@@ -137,13 +141,8 @@ document.addEventListener('DOMContentLoaded', function () {
 					return day + '/' + month;
 				}
 
-				let title = '';
-				if (info.view && info.view.type === 'dayGridMonth') {
-					title = `Tháng ${start.getMonth() + 1}, ${start.getFullYear()}`;
-				} else {
-					const year = end.getFullYear();
-					title = `${fmt(start)} - ${fmt(end)}, ${year}`;
-				}
+				const year = end.getFullYear();
+				const title = `${fmt(start)} - ${fmt(end)}, ${year}`;
 				const el = document.querySelector('.fc-toolbar-title');
 				if (el) el.textContent = title;
 			} catch (e) {
