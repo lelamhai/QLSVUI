@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý lớp học</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="../assets/css/template.css" rel="stylesheet">
+    <link href="../assets/css/content.css" rel="stylesheet">
+    <link href="../assets/css/classroom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker3.min.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand-box">
+                <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div>
+                    <div class="brand-title">NV000001</div>
+                    <div class="brand-sub">Phan Như Nguyệt</div>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <a href="index.html" class="menu-item">
+                    <span class="menu-icon"><i class="fa-solid fa-border-all"></i></span>
+                    <span class="menu-text"><strong>Trang chủ</strong></span>
+                </a>
+                <a href="open-course.html" class="menu-item">
+                    <span class="menu-icon"><i class="fa-regular fa-clipboard"></i></span>
+                    <span class="menu-text"><strong>Quản lý lớp</strong></span>
+                </a>
+                <a href="student.html" class="menu-item">
+                    <span class="menu-icon"><i class="fa-regular fa-square-check"></i></span>
+                    <span class="menu-text"><strong>Quản lý sinh viên</strong></span>
+                </a>
+                <a href="input-score.html" class="menu-item">
+                    <span class="menu-icon"><i class="fa-solid fa-trophy"></i></span>
+                    <span class="menu-text"><strong>Bảng điểm</strong></span>
+                </a>
+                <a href="classroom.html" class="menu-item active">
+                    <span class="menu-icon"><i class="fa-solid fa-school"></i></span>
+                    <span class="menu-text"><strong>Lớp học</strong></span>
+                </a>
+                <a href="/logout" class="menu-item logout-item">
+                    <span class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+                    <span class="menu-text"><strong>Đăng xuất</strong></span>
+                </a>
+            </nav>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+        <main class="main-content">
+            <header class="top-header">
+                <button class="toggle-btn" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+                <button class="notify-btn" id="notify-toggle"><i class="fa-regular fa-bell"></i><span class="notify-badge">3</span></button>
+                <div class="notification-panel" id="notification-panel" aria-hidden="true">
+                    <div class="notification-header">
+                        <h3>Thông báo</h3>
+                        <a href="#" class="mark-all-read">Đánh dấu tất cả</a>
+                    </div>
+                    <div class="notification-list">
+                        <div class="notification-item">
+                            <div class="notification-icon"><i class="fa-solid fa-bookmark"></i></div>
+                            <div class="notification-content">
+                                <div class="notification-title">Điểm đã được cập nhật!</div>
+                                <div class="notification-description">Điểm môn Cấu trúc dữ liệu và giải thuật...</div>
+                                <div class="notification-date">29/1/2026</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon"><i class="fa-solid fa-bookmark"></i></div>
+                            <div class="notification-content">
+                                <div class="notification-title">Điểm đã được cập nhật!</div>
+                                <div class="notification-description">Điểm môn Cơ sở dữ liệu...</div>
+                                <div class="notification-date">28/1/2026</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon"><i class="fa-solid fa-bookmark"></i></div>
+                            <div class="notification-content">
+                                <div class="notification-title">Điểm đã được cập nhật!</div>
+                                <div class="notification-description">Điểm môn Lập trình hướng đối tượng...</div>
+                                <div class="notification-date">27/1/2026</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+           <section class="content-wrap">
+                <div class="page-title-row">
+                    <div class="page-title-group">
+                        <div class="title-icon"><i class="fa-solid fa-school"></i></div>
+                        <div>
+                            <h1>Quản lý lớp học</h1>
+                        </div>
+                    </div>
+                    <span class="status-badge">Tổng 6 lớp học</span>
+                </div>
+
+                <div class="table-card">
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="student-search" placeholder="Tìm kiếm theo mã lớp, tên lớp" />
+                        </div>
+                        <div class="toolbar-actions">
+                            <button class="filter-btn" id="filter-toggle" aria-expanded="false"><i class="fa-solid fa-filter"></i> Lọc</button>
+                            <button class="add-course-btn" type="button" id="add-student-btn">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <span>Thêm lớp học</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="filter-panel" id="filter-panel" aria-hidden="true">
+                        <div class="filter-fields student-filter-grid">
+                            <div class="filter-group">
+                                <label for="filter-class">Khóa học</label>
+                                <select id="filter-class" class="filter-select">
+                                    <option value="">Tất cả khóa</option>
+                                    <option value="K23">K23</option>
+                                    <option value="K22">K22</option>
+                                    <option value="K21">K21</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="filter-gender">Khoa</label>
+                                <select id="filter-gender" class="filter-select">
+                                    <option value="">Tất cả khoa</option>
+                                    <option value="CNTT">Công nghệ thông tin</option>
+                                    <option value="KTPM">Kỹ thuật phần mềm</option>
+                                    <option value="HTTT">Hệ thống thông tin</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="filter-status">Trạng thái</label>
+                                <select id="filter-status" class="filter-select">
+                                    <option value="">Tất cả trạng thái</option>
+                                    <option value="Hoạt động">Hoạt động</option>
+                                    <option value="Tạm dừng">Tạm dừng</option>
+                                    <option value="Kết thúc">Kết thúc</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="course-table student-table" id="student-table">
+                            <thead>
+                                <tr>
+                                    <th>Khoa</th>
+                                    <th>Mã lớp</th>
+                                    <th>Tên lớp</th>
+                                    <th>Khóa học</th>
+                                    <th>Mã nhân viên</th>
+                                    <th>Ngày mở lớp</th>
+                                    <th>Trạng thái</th>
+                                    <th class="actions-header"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-malop="CNTT01" data-tenlop="Công nghệ thông tin 01" data-khoahoc="K23" data-makhoa="CNTT" data-manv="NV000001" data-ngaymolop="01/09/2023" data-trangthai="Hoạt động">
+                                    <td><strong>Công nghệ thông tin</strong></td>
+                                    <td class="code">CNTT01</td>
+                                    <td>Công nghệ thông tin 01</td>
+                                    <td>K23</td>
+                                    <td>NV000001</td>
+                                    <td>01/09/2023</td>
+                                    <td><span class="student-status status-active">Hoạt động</span></td>
+                                    <td class="actions-cell"><div class="course-actions"><button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học"><i class="fa-solid fa-pen"></i></button><button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học"><i class="fa-solid fa-trash"></i></button></div></td>
+                                </tr>
+                                <tr data-malop="CNTT02" data-tenlop="Công nghệ thông tin 02" data-khoahoc="K23" data-makhoa="CNTT" data-manv="NV000002" data-ngaymolop="01/09/2023" data-trangthai="Hoạt động">
+                                    <td><strong>Công nghệ thông tin</strong></td>
+                                    <td class="code">CNTT02</td>
+                                    <td>Công nghệ thông tin 02</td>
+                                    <td>K23</td>
+                                    <td>NV000002</td>
+                                    <td>01/09/2023</td>
+                                    <td><span class="student-status status-active">Hoạt động</span></td>
+                                    <td class="actions-cell"><div class="course-actions"><button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học"><i class="fa-solid fa-pen"></i></button><button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học"><i class="fa-solid fa-trash"></i></button></div></td>
+                                </tr>
+                                <tr data-malop="KTPM01" data-tenlop="Kỹ thuật phần mềm 01" data-khoahoc="K23" data-makhoa="KTPM" data-manv="NV000003" data-ngaymolop="05/09/2023" data-trangthai="Hoạt động">
+                                    <td><strong>Kỹ thuật phần mềm</strong></td>
+                                    <td class="code">KTPM01</td>
+                                    <td>Kỹ thuật phần mềm 01</td>
+                                    <td>K23</td>
+                                    <td>NV000003</td>
+                                    <td>05/09/2023</td>
+                                    <td><span class="student-status status-active">Hoạt động</span></td>
+                                    <td class="actions-cell"><div class="course-actions"><button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học"><i class="fa-solid fa-pen"></i></button><button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học"><i class="fa-solid fa-trash"></i></button></div></td>
+                                </tr>
+                                <tr data-malop="HTTT01" data-tenlop="Hệ thống thông tin 01" data-khoahoc="K22" data-makhoa="HTTT" data-manv="NV000001" data-ngaymolop="10/09/2022" data-trangthai="Tạm dừng">
+                                    <td><strong>Hệ thống thông tin</strong></td>
+                                    <td class="code">HTTT01</td>
+                                    <td>Hệ thống thông tin 01</td>
+                                    <td>K22</td>
+                                    <td>NV000001</td>
+                                    <td>10/09/2022</td>
+                                    <td><span class="student-status status-paused">Tạm dừng</span></td>
+                                    <td class="actions-cell"><div class="course-actions"><button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học"><i class="fa-solid fa-pen"></i></button><button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học"><i class="fa-solid fa-trash"></i></button></div></td>
+                                </tr>
+                                <tr data-malop="CNTT03" data-tenlop="Công nghệ thông tin 03" data-khoahoc="K21" data-makhoa="CNTT" data-manv="NV000002" data-ngaymolop="15/09/2021" data-trangthai="Kết thúc">
+                                    <td><strong>Công nghệ thông tin</strong></td>
+                                    <td class="code">CNTT03</td>
+                                    <td>Công nghệ thông tin 03</td>
+                                    <td>K21</td>
+                                    <td>NV000002</td>
+                                    <td>15/09/2021</td>
+                                    <td><span class="student-status status-inactive">Kết thúc</span></td>
+                                    <td class="actions-cell"><div class="course-actions"><button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học"><i class="fa-solid fa-pen"></i></button><button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học"><i class="fa-solid fa-trash"></i></button></div></td>
+                                </tr>
+                                <tr data-malop="KTPM02" data-tenlop="Kỹ thuật phần mềm 02" data-khoahoc="K22" data-makhoa="KTPM" data-manv="NV000003" data-ngaymolop="20/09/2022" data-trangthai="Hoạt động">
+                                    <td><strong>Kỹ thuật phần mềm</strong></td>
+                                    <td class="code">KTPM02</td>
+                                    <td>Kỹ thuật phần mềm 02</td>
+                                    <td>K22</td>
+                                    <td>NV000003</td>
+                                    <td>20/09/2022</td>
+                                    <td><span class="student-status status-active">Hoạt động</span></td>
+                                    <td class="actions-cell"><div class="course-actions"><button type="button" class="action-btn edit-btn" title="Sửa" aria-label="Sửa lớp học"><i class="fa-solid fa-pen"></i></button><button type="button" class="action-btn delete-btn" title="Xóa" aria-label="Xóa lớp học"><i class="fa-solid fa-trash"></i></button></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination-wrapper">
+                        <nav class="pagination">
+                            <button class="pagination-btn pagination-prev" title="Trang trước"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button class="pagination-page active">1</button>
+                            <button class="pagination-page">2</button>
+                            <button class="pagination-page">3</button>
+                            <span class="pagination-dots">...</span>
+                            <button class="pagination-page">10</button>
+                            <button class="pagination-btn pagination-next" title="Trang sau"><i class="fa-solid fa-chevron-right"></i></button>
+                        </nav>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/content.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="../assets/js/classroom.js"></script>
+
+    <!-- Slide-in Add Classroom Panel -->
+    <div class="slide-panel-overlay" id="add-panel-overlay" aria-hidden="true"></div>
+    <aside class="slide-panel" id="add-student-panel" aria-hidden="true" role="dialog" aria-label="Thêm lớp học">
+        <div class="slide-panel-header">
+            <h3>Thêm lớp học</h3>
+            <button type="button" class="close-panel" id="close-add-panel" aria-label="Đóng">&times;</button>
+        </div>
+        <form id="add-student-form" class="slide-panel-body">
+            <div class="form-row two-cols">
+                <div>
+                    <label for="add-masv">Mã lớp</label>
+                    <input type="text" id="add-masv" placeholder="CNTT04" />
+                </div>
+                <div>
+                    <label for="add-ho">Tên lớp</label>
+                    <input type="text" id="add-ho" placeholder="Công nghệ thông tin 04" />
+                </div>
+            </div>
+            <div class="form-row two-cols">
+                <div>
+                    <label for="edit-ten">Khóa học</label>
+                    <select id="edit-ten" class="filter-select">
+                        <option>K23</option>
+                        <option>K22</option>
+                        <option>K21</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="edit-phai">Khoa</label>
+                    <select id="edit-phai" class="filter-select">
+                        <option>CNTT</option>
+                        <option>KTPM</option>
+                        <option>HTTT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row two-cols">
+                <div>
+                    <label for="edit-sodienthoai">Mã nhân viên</label>
+                    <input type="text" id="edit-sodienthoai" />
+                </div>
+                <div>
+                    <label for="edit-ngaysinh">Ngày mở lớp</label>
+                    <input type="text" id="edit-ngaysinh" class="date-picker" />
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="add-danghoc">Trạng thái</label>
+                <select id="add-danghoc" class="filter-select">
+                    <option>Hoạt động</option>
+                    <option>Tạm dừng</option>
+                    <option>Kết thúc</option>
+                </select>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" id="cancel-add-student" class="filter-btn">Hủy</button>
+                <button type="button" id="submit-add-student" class="add-course-btn">Thêm mới</button>
+            </div>
+        </form>
+    </aside>
+
+    <!-- Slide-in Edit Classroom Panel -->
+    <div class="slide-panel-overlay" id="edit-panel-overlay" aria-hidden="true"></div>
+    <aside class="slide-panel" id="edit-student-panel" aria-hidden="true" role="dialog" aria-label="Chỉnh sửa lớp học">
+        <div class="slide-panel-header">
+            <h3>Chỉnh sửa lớp học</h3>
+            <button type="button" class="close-panel" id="close-edit-panel" aria-label="Đóng">&times;</button>
+        </div>
+        <form id="edit-student-form" class="slide-panel-body">
+            <div class="form-row two-cols">
+                <div>
+                    <label for="edit-masv">Mã lớp</label>
+                    <input type="text" id="edit-masv" />
+                </div>
+                <div>
+                    <label for="edit-ho">Tên lớp</label>
+                    <input type="text" id="edit-ho" />
+                </div>
+            </div>
+            <div class="form-row two-cols">
+                <div>
+                    <label for="add-ten">Khóa học</label>
+                    <select id="add-ten" class="filter-select">
+                        <option>K23</option>
+                        <option>K22</option>
+                        <option>K21</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="add-phai">Khoa</label>
+                    <select id="add-phai" class="filter-select">
+                        <option>CNTT</option>
+                        <option>KTPM</option>
+                        <option>HTTT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row two-cols">
+                <div>
+                    <label for="add-sodienthoai">Mã nhân viên</label>
+                    <input type="text" id="add-sodienthoai" placeholder="NV000001" />
+                </div>
+                <div>
+                    <label for="add-ngaysinh">Ngày mở lớp</label>
+                    <input type="text" id="add-ngaysinh" class="date-picker" placeholder="dd/mm/yyyy" />
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="edit-danghoc">Trạng thái</label>
+                <select id="edit-danghoc" class="filter-select">
+                    <option>Hoạt động</option>
+                    <option>Tạm dừng</option>
+                    <option>Kết thúc</option>
+                </select>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" id="cancel-edit-student" class="filter-btn">Hủy</button>
+                <button type="button" id="submit-edit-student" class="add-course-btn">Lưu thay đổi</button>
+            </div>
+        </form>
+    </aside>
+</body>
+</html>
